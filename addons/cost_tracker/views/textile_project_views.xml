@@ -1,0 +1,72 @@
+<odoo>
+    <record id="view_textile_project_tree" model="ir.ui.view">
+        <field name="name">textile.project.tree</field>
+        <field name="model">textile.project</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="material_cost"/>
+                <field name="labor_cost"/>
+                <field name="total_cost"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_textile_project_form" model="ir.ui.view">
+        <field name="name">textile.project.form</field>
+        <field name="model">textile.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" type="object" string="Start Project" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Mark as Done"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="client_id"/>
+                    </group>
+                    <group>
+                        <field name="material_cost"/>
+                        <field name="labor_cost"/>
+                        <field name="total_cost" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_textile_project_graph" model="ir.ui.view">
+        <field name="name">textile.project.graph</field>
+        <field name="model">textile.project</field>
+        <field name="arch" type="xml">
+            <graph string="Project Costs" type="bar">
+                <field name="name"/>
+                <field name="total_cost" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_textile_project_pivot" model="ir.ui.view">
+        <field name="name">textile.project.pivot</field>
+        <field name="model">textile.project</field>
+        <field name="arch" type="xml">
+            <pivot string="Cost Analysis">
+                <field name="client_id" type="row"/>
+                <field name="total_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_textile_project" model="ir.actions.act_window">
+        <field name="name">Textile Projects</field>
+        <field name="res_model">textile.project</field>
+        <field name="view_mode">list,form,graph,pivot</field>
+    </record>
+
+    <menuitem id="menu_textile_root" name="Textile Cost Tracker" sequence="10"/>
+    <menuitem id="menu_textile_project" name="Projects" parent="menu_textile_root" action="action_textile_project" sequence="10"/>
+</odoo>

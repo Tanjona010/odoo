@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_textile_client,textile.client,model_textile_client,,1,1,1,1
+access_textile_project,textile.project,model_textile_project,,1,1,1,1
