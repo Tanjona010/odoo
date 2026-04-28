@@ -59,6 +59,22 @@ CLI upgrade:
 - Create projects and enter material/labor costs.
 - Use graph/pivot view switchers to analyze costs.
 
+## Docker Compose Usage
+
+This repository includes `docker-compose.yml` with Odoo and Postgres.
+
+```bash
+docker compose up -d
+```
+
+Then open `http://localhost:8069`, create a database, update the apps list, and install **Textile Cost Tracker**.
+
+To stop containers:
+
+```bash
+docker compose down
+```
+
 ## Notes for Odoo 17
 
 - List views use `<list>` instead of `<tree>`.
